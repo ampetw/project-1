@@ -2,53 +2,46 @@
 *{
     margin:0px;
     font-size: 15px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Arial, Helvetica, sans-serif;
     color:aliceblue; 
 }
 
 /*class names*/
 
+.container {
+    position: absolute;
+    display: flex;
+    gap: 100px;
 
+}
 
-.mainbox1{
+.mainbox{
+    width: 100px;
+    height: 600px;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgb(44, 44, 255), rgb(135, 131, 157));
 
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers minibox horizontally */
     position: relative;
-    background:black;
-    width:100px;
-    height:600px;
-    vertical-align: top;
-    padding:20px;
+}
+
+.minibox{
+    display: flex;
+    justify-content: flex-end;
+    background:rgb(135, 131, 157);
+    width:20px; 
+    height:500px; 
+    position: absolute;
+    bottom: -490px; 
 
 }
 
-.mainbox2{
-
-    display: inline-block; 
-    position: relative;
-    background:black;
-    width:100px; 
-    height:600px; 
-    vertical-align: top;
-    padding:20px;
-    left: 100px;
-   
- 
-}
-
-.mainbox3{
-
-    display: inline-block; 
-    position: relative;
-    background:black;
-    width:100px; 
-    height:600px; 
-    vertical-align: top;
-    padding:20px;
-    left: 200px;
-   
- 
-}
-
-  
-}
+.line{
+        width: 20px;                 /* thin = line */
+        height: 1130px;
+        background: rgb(135, 131, 157);
+        flex-shrink: 0; /* prevents flexbox from collapsing it to nothing when space is tight. */
+    }
+    
