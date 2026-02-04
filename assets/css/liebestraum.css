@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 110vh;
+    padding: 10px;
+    gap: 10px;
+    background: rgb(209, 227, 212);
+}
+
+.top {
+    display: flex;
+    width: 330px;
+    gap: 100px;
+}
+
+.box {
+    /* Box properties */
+    width: 330px;
+    background-color: rgb(209, 227, 212);
+    padding: 10px; /* Optional: adds space between border and content */
+
+    /* Flexbox properties for centering text */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    text-align: center;      /* Ensures multi-line text is centered within its own flow */
+}
+.middle{
+    display: flex;
+    width: 330px;
+    gap: 10px;
+}
