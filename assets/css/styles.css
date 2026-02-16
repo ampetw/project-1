@@ -25,8 +25,14 @@
     flex-direction: column;
     align-items: center;   /* centers minibox horizontally */
     position: relative;
+    transition: 0.5s ease;
 }
+.mainbox:hover{
+    background: linear-gradient(to bottom, rgb(4, 4, 40), rgb(135, 131, 157));
 
+
+
+}
 .minibox{
     display: flex;
     justify-content: flex-end;
@@ -44,4 +50,58 @@
         background: rgb(135, 131, 157);
         flex-shrink: 0; /* prevents flexbox from collapsing it to nothing when space is tight. */
     }
+
+
+    @keyframes color {
+        0% {
+        background-color:  rgb(254, 253, 221);
+
+          }
+          50% {
+        background-color: rgb(209, 253, 142);
+
+          }
+          100% {
+        background-color: rgb(254, 253, 221);
+
+          }
+        
+
+        
+      }
+
+   Body {
+        animation-name: color;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+
+      }
+      
+    .s {
+
+            background: none;        /* removes background */
+            border: none;            /* removes border */
+            padding: 0;              /* removes default padding */
+            margin: 0;
+            color: rgb(255, 252, 252);
+            font-size: 20px;
+            font-family: inherit;
+            cursor: pointer;         /* keeps it feeling clickable */
+            transition: 0.5s ease;
+            transform: translateY(30px);
+
+           
+     }
+         
+   
+   .s:hover {
+    color: greenyellow;
+    filter: blur(4px);       /* heavy blur */
+
+}
+
+
+
+
+      
     

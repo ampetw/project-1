@@ -13,7 +13,6 @@ body {
     height: 110vh;
     padding: 10px;
     gap: 10px;
-    background: rgb(209, 227, 212);
 }
 
 .top {
@@ -25,7 +24,6 @@ body {
 .box {
     /* Box properties */
     width: 330px;
-    background-color: rgb(209, 227, 212);
     padding: 10px; /* Optional: adds space between border and content */
 
     /* Flexbox properties for centering text */
