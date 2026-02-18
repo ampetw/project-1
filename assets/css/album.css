@@ -1,0 +1,228 @@
+
+body {
+    background: linear-gradient(
+      to bottom,
+      rgb(196, 244, 239),
+      rgb(225, 248, 51)
+    );
+    min-height: 100vh;  /* ensures it fills full screen height */
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.title {
+    margin: 40px 0 20px 0;
+    font-size: 2.5rem;
+}
+
+/* Carousel container */
+.carousel-wrapper {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Scrollable track */
+.carousel {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px;
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar (optional) */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual album */
+.album {
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+}
+
+.album img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.album:hover img {
+    transform: scale(1.05);
+    cursor:move;
+
+}
+
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;      /* stays on screen while scrolling */
+    bottom: 20px;          /* moved from top to bottom */
+    left: 20px;            /* keeps it on the left */
+    width: 50px;
+    height: 50px;
+    font-size: 30px;      /* size of the note */
+    background: linear-gradient(to bottom, rgb(44, 44, 255), rgb(135, 131, 157));
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 50%;   /* makes it circular */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    font-size: 15px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    z-index: 100;         /* stays above other elements */
+}
+
+.back-button:hover {
+    color: greenyellow;
+    transform: scale(1.2); /* grows on hover */
+    filter: drop-shadow(0 0 8px greenyellow);
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;  /* makes gradient/image fill the whole screen */
+}
+
+
+
+body {
+    padding: 40px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: "Helvetica Neue", sans-serif;
+    color: #000000;
+}
+
+h2 {
+    font-size: 32px;
+    color: #000000;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000000;
+}
+
+@media screen and (max-width: 1024px) 
+ {
+    body {
+        padding: 32px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+}
+
+
+@media screen and (max-width: 768px) 
+ {
+    body {
+        padding: 28px;
+    }
+
+    h1 {
+        font-family: "Helvetica Neue", sans-serif;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+}
+
+@media screen and (max-width: 600px) 
+ {
+    body {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+    }
+
+    p {
+        font-size: 15px;
+        color: #000000;
+    }
+}
+
+@media screen and (max-width: 480px) 
+{
+    body {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+@media screen and (max-width: 320px) 
+{
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
+    .notes {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; /* doesn't block clicks */
+        overflow: hidden;
+        z-index: -1;
+    }
+    
+
+    

@@ -12,8 +12,18 @@
     position: absolute;
     display: flex;
     gap: 100px;
+    width: 100%;  /* make sure child elements can take full width */
+    align-items: stretch;  /* ensures children and lines stretch to container height */
 
 }
+
+.mainbox-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+}
+
 
 .mainbox{
     width: 100px;
@@ -36,20 +46,25 @@
 .minibox{
     display: flex;
     justify-content: flex-end;
-    background:rgb(135, 131, 157);
-    width:20px; 
-    height:500px; 
+    background: rgb(135, 131, 157);
+    width: 20px;
     position: absolute;
-    bottom: -490px; 
+    top: 100%;
+    height: 600px;
+
+    min-height: 200px;
 
 }
 
 .line{
         width: 20px;                 /* thin = line */
-        height: 1130px;
+        height: 1240px;
         background: rgb(135, 131, 157);
         flex-shrink: 0; /* prevents flexbox from collapsing it to nothing when space is tight. */
     }
+
+    
+/* For all screens */
 
 
     @keyframes color {
@@ -78,19 +93,26 @@
       }
       
     .s {
-
-            background: none;        /* removes background */
-            border: none;            /* removes border */
-            padding: 0;              /* removes default padding */
-            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 100px;
+            margin-left: -300px;
+            margin-top: -50px;
+            background: none;
+            border: none;
+            padding: 0;
             color: rgb(255, 252, 252);
-            font-size: 20px;
+            font-size: 22px;
             font-family: inherit;
-            cursor: pointer;         /* keeps it feeling clickable */
+            cursor: pointer;
             transition: 0.5s ease;
-            transform: translateY(30px);
-
-           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-90deg);
+            white-space: nowrap;
      }
          
    
@@ -99,6 +121,58 @@
     filter: blur(4px);       /* heavy blur */
 
 }
+
+/* Thin screens: rotate entire index 90° left */
+@media (max-width: 768px) {
+    html {
+        overflow: hidden;
+    }
+
+    body {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100vh;
+        height: 100vw;
+        margin: 0;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        transform-origin: center center;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .container {
+        position: relative;
+    }
+
+}
+/* Media query for narrow screens */
+
+
+@media (max-width: 750px) {
+    .mainbox {
+        width: 80px;
+        height: 300px;
+    }
+    .line {
+        height: 750px;      /* make it thin like before */
+        background: rgb(135, 131, 157);
+        flex-shrink: 0;    /* don’t let it collapse */
+    }
+    .minibox{
+        height: 410px;      /* make it thin like before */
+
+    }
+    .s {
+        transform: rotate(90deg); /* rotate buttons back upright */
+        top: auto;
+        left: auto;
+        margin: 0;
+    }
+
+}
+
+/* Mobile rotation: only for screens ≤ 768px */
 
 
 

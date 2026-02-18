@@ -1,0 +1,184 @@
+
+  body {
+    background: linear-gradient(
+      to bottom,
+      rgb(196, 244, 239),
+      rgb(225, 248, 51)
+    );
+    min-height: 100vh;  /* ensures it fills full screen height */
+  }
+  
+  .country-buttons {
+    display: flex;
+    justify-content: space-between; /* stretches buttons across full width */
+    align-items: center;
+    width: 100%;            /* takes full width of container */
+    max-width: 1200px;      /* optional: limits max width so buttons don’t get too far apart on huge screens */
+    margin: 0 auto;          /* centers container if max-width is set */
+    flex-wrap: wrap;         /* wraps to next line on very small screens */
+    padding: 0 20px;         /* optional: adds some padding on sides */
+}
+
+.image-button img {
+    display: block;
+    cursor: pointer;
+    width: 15vw;      /* scales with screen */
+    min-width: 80px;
+    max-width: 180px;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.image-button img:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px rgb(44,44,255));
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;      /* stays on screen while scrolling */
+    bottom: 20px;          /* moved from top to bottom */
+    left: 20px;            /* keeps it on the left */
+    width: 50px;
+    height: 50px;
+    font-size: 30px;      /* size of the note */
+    background: linear-gradient(to bottom, rgb(44, 44, 255), rgb(135, 131, 157));
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 50%;   /* makes it circular */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    font-size: 15px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    z-index: 100;         /* stays above other elements */
+}
+
+.back-button:hover {
+    color: greenyellow;
+    transform: scale(1.2); /* grows on hover */
+    filter: drop-shadow(0 0 8px greenyellow);
+}
+
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;  /* makes gradient/image fill the whole screen */
+}
+
+
+body {
+    padding: 40px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: "Helvetica Neue", sans-serif;
+    color: #000000;
+}
+
+h2 {
+    font-size: 32px;
+    color: #000000;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000000;
+}
+
+@media screen and (max-width: 1024px) 
+ {
+    body {
+        padding: 32px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+}
+
+
+@media screen and (max-width: 768px) 
+ {
+    body {
+        padding: 28px;
+    }
+
+    h1 {
+        font-family: "Helvetica Neue", sans-serif;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+}
+
+@media screen and (max-width: 600px) 
+ {
+    body {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+    }
+
+    p {
+        font-size: 15px;
+        color: #000000;
+    }
+}
+
+@media screen and (max-width: 480px) 
+{
+    body {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+@media screen and (max-width: 320px) 
+{
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+
