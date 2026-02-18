@@ -13,93 +13,177 @@
                 back
             </a>
 
-    <div class="container">
 
-    <div class="top">
-        <img src="assets/images/lieb1.png" class="top">        
-        <img src="assets/images/lieb1.png" class="top">        
-        <img src="assets/images/lieb1.png" class="top">  
-        <img src="assets/images/lieb1.png" class="top">        
-        <img src="assets/images/lieb1.png" class="top">                           
-    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Piano Note Guessing Game</title>
 
+<style>
 
-    
-    <div class="middle">
-        <img src="assets/images/lieb1.png" class="top">        
-        <img src="assets/images/lieb1.png" class="top">        
-        <img src="assets/images/lieb1.png" class="top">  
-        <img src="assets/images/lieb1.png" class="top">        
-        <img src="assets/images/lieb1.png" class="top">              
+}
 
-    </div>
-    
-    </div>
-    <div class="bottom">
+h1 {
+    margin-bottom: 10px;
+}
 
-        <p>"O lieb, so lang du lieben kannst!"</p>
-    
+#noteDisplay {
+    font-size: 60px;
+    margin: 20px 0;
+    font-weight: bold;
+}
 
-        <p> &nbsp;&nbsp;&nbsp;&nbsp;O lieb, so lang du lieben kannst!
-            O lieb, so lang du lieben magst!
-            Die Stunde kommt, die Stunde kommt,
-            Wo du an Gräbern stehst und klagst!</p>
-           
+.piano {
+    position: relative;
+    width: 420px;
+    height: 220px;
+    margin: 40px auto;
+}
 
-            
-            <p>&nbsp;&nbsp;Und sorge, daß dein Herze glüht
-                Und Liebe hegt und Liebe trägt,
-                So lang ihm noch ein ander Herz
-                In Liebe warm entgegen schlägt.</p>
+/* White Keys */
+.white-key {
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 220px;
+    border: 1px solid black;
+    background: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
 
-            
-            <p>&nbsp;&nbsp;&nbsp;Und wer dir seine Brust erschließt,
-                O tu ihm, was du kannst, zulieb!
-                Und mach ihm jede Stunde froh,
-                Und mach ihm keine Stunde trüb.
-                </p>
+.white-key:hover {
+    background: #eee;
+}
 
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Und hüte deine Zunge wohl,
-                Bald ist ein böses Wort gesagt!
-                O Gott, es war nicht bös gemeint, -
-                Der Andre aber geht und klagt.</p>
-            
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O lieb, so lang du lieben kannst!
-                O lieb, so lang du lieben magst!
-                Die Stunde kommt, die Stunde kommt,
-                Wo du an Gräbern stehst und klagst!</p>
-            
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dann kniest du nieder an der Gruft,
-                Und birgst die Augen, trüb und naß
-                - sie sehn den Andern nimmermehr -
-                In's lange, feuchte Kirchhofsgras.</p>
-            
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Und sprichst: O schau auf mich herab
-                Der hier an deinem Grabe weint!
-                Vergib, daß ich gekränkt dich hab!
-                O Gott, es war nicht bös gemeint!</p>
+/* Black Keys */
+.black-key {
+    position: absolute;
+    width: 40px;
+    height: 140px;
+    background: black;
+    top: 0;
+    z-index: 2;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 12px;
+    padding-bottom: 8px;
+}
 
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Er aber sieht und hört dich nicht,
-                Kommt nicht, daß du ihn froh umfängst;
-                Der Mund, der oft dich küßte, spricht
-                Nie wieder: ich vergab dir längst!</p>
-            
-            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Er that's, vergab dir lange schon,
-                Doch manche heiße Träne fiel
-                Um dich und um dein herbes Wort -
-                Doch still - er ruht, er ist am Ziel!</p>
+.black-key:hover {
+    background: #333;
+}
 
-            <p>&nbsp;&nbsp;&nbsp;O lieb, so lang du lieben kannst!
-                O lieb, so lang du lieben magst!
-                Die Stunde kommt, die Stunde kommt,
-                wo du an Gräbern stehst und klagst!</p>
-            </div>
+/* Position black keys */
+#cSharp { left: 45px; }
+#dSharp { left: 105px; }
+#fSharp { left: 225px; }
+#gSharp { left: 285px; }
+#aSharp { left: 345px; }
+
+#result {
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#score {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background: #2c25fa;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+
+}
+
+button:hover {
+    color: greenyellow;
+    transform: scale(1.2); /* grows on hover */
+    filter: drop-shadow(0 0 8px greenyellow);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Guess The Piano Note!</h1>
+
+<div id="noteDisplay">?</div>
+
+<div class="piano">
+
+    <!-- White Keys -->
+    <div class="white-key" onclick="checkAnswer('C')"></div>
+    <div class="white-key" onclick="checkAnswer('D')"></div>
+    <div class="white-key" onclick="checkAnswer('E')"></div>
+    <div class="white-key" onclick="checkAnswer('F')"></div>
+    <div class="white-key" onclick="checkAnswer('G')"></div>
+    <div class="white-key" onclick="checkAnswer('A')"></div>
+    <div class="white-key" onclick="checkAnswer('B')"></div>
+
+    <!-- Black Keys -->
+    <div class="black-key" id="cSharp" onclick="checkAnswer('C#')"></div>
+    <div class="black-key" id="dSharp" onclick="checkAnswer('D#')"></div>
+    <div class="black-key" id="fSharp" onclick="checkAnswer('F#')"></div>
+    <div class="black-key" id="gSharp" onclick="checkAnswer('G#')"></div>
+    <div class="black-key" id="aSharp" onclick="checkAnswer('A#')"></div>
+
+</div>
+
+<div id="result"></div>
+<div id="score">Score: 0</div>
+
+<button onclick="newNote()">New Note</button>
+
+<script>
+const notes = ["C","D","E","F","G","A","B","C#","D#","F#","G#","A#"];
+let currentNote = "";
+let score = 0;
+
+function newNote() {
+    currentNote = notes[Math.floor(Math.random() * notes.length)];
+    document.getElementById("noteDisplay").textContent = currentNote;
+    document.getElementById("result").textContent = "";
+}
+
+function checkAnswer(selected) {
+    if (selected === currentNote) {
+        document.getElementById("result").textContent = "✅ Correct!";
+        score++;
+    } else {
+        document.getElementById("result").textContent = "❌ Try again!";
+    }
+    document.getElementById("score").textContent = "Score: " + score;
+}
+
+newNote();
+</script>
+
+</body>
+</html>
+
 </body>
 
     </body>
 
-    <p>
-        <a href="index.html">back</a>         
-    </p>
 
 </html>

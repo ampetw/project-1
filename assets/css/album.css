@@ -12,12 +12,20 @@ body {
     padding: 0;
 }
 
-
-
-.title {
-    margin: 40px 0 20px 0;
-    font-size: 2.5rem;
+.scroll-word {
+  color: rgb(44, 44, 255);   /* change to any color you want */
 }
+
+  
+  @keyframes moveRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(20px);
+    }
+  }
+  
 
 /* Carousel container */
 .carousel-wrapper {
