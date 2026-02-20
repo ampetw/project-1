@@ -1,189 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Liebestraum</title>
-        <link rel="stylesheet" href="assets/css/sheetmusic.css">
-
-    </head>
-    <body>
-        <body style="background-color: #f9f2e1;">
-            <a href="index.html" class="back-button" title="Go Back">
-                back
-            </a>
-
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Piano Note Guessing Game</title>
-
-<style>
-
-}
-
-h1 {
-    margin-bottom: 10px;
-}
-
-#noteDisplay {
-    font-size: 60px;
-    margin: 20px 0;
-    font-weight: bold;
-}
-
-.piano {
-    position: relative;
-    width: 420px;
-    height: 220px;
-    margin: 40px auto;
-}
-
-/* White Keys */
-.white-key {
-    position: relative;
-    float: left;
-    width: 60px;
-    height: 220px;
-    border: 1px solid black;
-    background: white;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    font-weight: bold;
-    padding-bottom: 10px;
-}
-
-.white-key:hover {
-    background: #eee;
-}
-
-/* Black Keys */
-.black-key {
-    position: absolute;
-    width: 40px;
-    height: 140px;
-    background: black;
-    top: 0;
-    z-index: 2;
-    cursor: pointer;
-    color: white;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    font-size: 12px;
-    padding-bottom: 8px;
-}
-
-.black-key:hover {
-    background: #333;
-}
-
-/* Position black keys */
-#cSharp { left: 45px; }
-#dSharp { left: 105px; }
-#fSharp { left: 225px; }
-#gSharp { left: 285px; }
-#aSharp { left: 345px; }
-
-#result {
-    font-size: 24px;
-    margin-top: 20px;
-}
-
-#score {
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    background: #2c25fa;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s ease;
-
-}
-
-button:hover {
-    color: greenyellow;
-    transform: scale(1.2); /* grows on hover */
-    filter: drop-shadow(0 0 8px greenyellow);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Piano Note Guessing Game</title>
+    <link rel="stylesheet" href="assets/css/pianoguess.css">
 </head>
+<body style="background-color: #f9f2e1;">
+    <a href="index.html" class="back-button" title="Go Back">back</a>
 
-<body>
+    <h1>Guess The Piano Note!</h1>
+    <div id="noteDisplay">?</div>
 
-<h1>Guess The Piano Note!</h1>
+    <div class="piano">
+        <div class="white-key" data-note="C" data-freq="261.63" onclick="checkAnswer('C')"></div>
+        <div class="white-key" data-note="D" data-freq="293.66" onclick="checkAnswer('D')"></div>
+        <div class="white-key" data-note="E" data-freq="329.63" onclick="checkAnswer('E')"></div>
+        <div class="white-key" data-note="F" data-freq="349.23" onclick="checkAnswer('F')"></div>
+        <div class="white-key" data-note="G" data-freq="392.00" onclick="checkAnswer('G')"></div>
+        <div class="white-key" data-note="A" data-freq="440.00" onclick="checkAnswer('A')"></div>
+        <div class="white-key" data-note="B" data-freq="493.88" onclick="checkAnswer('B')"></div>
 
-<div id="noteDisplay">?</div>
+        <div class="black-key" id="cSharp" data-note="C#" data-freq="277.18" onclick="checkAnswer('C#')"></div>
+        <div class="black-key" id="dSharp" data-note="D#" data-freq="311.13" onclick="checkAnswer('D#')"></div>
+        <div class="black-key" id="fSharp" data-note="F#" data-freq="369.99" onclick="checkAnswer('F#')"></div>
+        <div class="black-key" id="gSharp" data-note="G#" data-freq="415.30" onclick="checkAnswer('G#')"></div>
+        <div class="black-key" id="aSharp" data-note="A#" data-freq="466.16" onclick="checkAnswer('A#')"></div>
+    </div>
 
-<div class="piano">
+    <div id="result"></div>
+    <div id="score">Score: 0</div>
+    <button onclick="newNote()">New Note</button>
 
-    <!-- White Keys -->
-    <div class="white-key" onclick="checkAnswer('C')"></div>
-    <div class="white-key" onclick="checkAnswer('D')"></div>
-    <div class="white-key" onclick="checkAnswer('E')"></div>
-    <div class="white-key" onclick="checkAnswer('F')"></div>
-    <div class="white-key" onclick="checkAnswer('G')"></div>
-    <div class="white-key" onclick="checkAnswer('A')"></div>
-    <div class="white-key" onclick="checkAnswer('B')"></div>
+    <script>
+        const notes = ["C","D","E","F","G","A","B","C#","D#","F#","G#","A#"];
+        let currentNote = "";
+        let score = 0;
 
-    <!-- Black Keys -->
-    <div class="black-key" id="cSharp" onclick="checkAnswer('C#')"></div>
-    <div class="black-key" id="dSharp" onclick="checkAnswer('D#')"></div>
-    <div class="black-key" id="fSharp" onclick="checkAnswer('F#')"></div>
-    <div class="black-key" id="gSharp" onclick="checkAnswer('G#')"></div>
-    <div class="black-key" id="aSharp" onclick="checkAnswer('A#')"></div>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = AudioContext ? new AudioContext() : null;
 
-</div>
+        function playPianoNote(freq) {
+            if (!audioCtx || !freq) return;
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.frequency.value = parseFloat(freq);
+            osc.type = 'triangle';
+            gain.gain.setValueAtTime(0, now);
+            gain.gain.linearRampToValueAtTime(0.25, now + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+            osc.start(now);
+            osc.stop(now + 0.35);
+        }
 
-<div id="result"></div>
-<div id="score">Score: 0</div>
+        document.querySelectorAll('.white-key, .black-key').forEach(function(key) {
+            key.addEventListener('click', function() {
+                const freq = this.getAttribute('data-freq');
+                if (freq) playPianoNote(freq);
+            });
+        });
 
-<button onclick="newNote()">New Note</button>
+        function newNote() {
+            currentNote = notes[Math.floor(Math.random() * notes.length)];
+            document.getElementById("noteDisplay").textContent = currentNote;
+            document.getElementById("result").textContent = "";
+        }
 
-<script>
-const notes = ["C","D","E","F","G","A","B","C#","D#","F#","G#","A#"];
-let currentNote = "";
-let score = 0;
+        function checkAnswer(selected) {
+            if (selected === currentNote) {
+                document.getElementById("result").textContent = "✅ Correct!";
+                score++;
+            } else {
+                document.getElementById("result").textContent = "❌ Try again!";
+            }
+            document.getElementById("score").textContent = "Score: " + score;
+        }
 
-function newNote() {
-    currentNote = notes[Math.floor(Math.random() * notes.length)];
-    document.getElementById("noteDisplay").textContent = currentNote;
-    document.getElementById("result").textContent = "";
-}
-
-function checkAnswer(selected) {
-    if (selected === currentNote) {
-        document.getElementById("result").textContent = "✅ Correct!";
-        score++;
-    } else {
-        document.getElementById("result").textContent = "❌ Try again!";
-    }
-    document.getElementById("score").textContent = "Score: " + score;
-}
-
-newNote();
-</script>
-
+        newNote();
+    </script>
 </body>
-</html>
-
-</body>
-
-    </body>
-
-
 </html>

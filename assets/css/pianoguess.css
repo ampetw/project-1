@@ -1,0 +1,298 @@
+
+body {
+    background: linear-gradient(
+      to bottom,
+      rgb(196, 244, 239),
+      rgb(225, 248, 51)
+    );
+    min-height: 100vh;  /* ensures it fills full screen height */
+  }
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;      /* stays on screen while scrolling */
+    bottom: 20px;          /* moved from top to bottom */
+    left: 20px;            /* keeps it on the left */
+    width: 50px;
+    height: 50px;
+    font-size: 30px;      /* size of the note */
+    background: linear-gradient(to bottom, rgb(44, 44, 255), rgb(135, 131, 157));
+    color: aliceblue;
+    text-decoration: none;
+    border-radius: 50%;   /* makes it circular */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    font-size: 15px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    z-index: 100;         /* stays above other elements */
+}
+
+.back-button:hover {
+    color: greenyellow;
+    transform: scale(1.2); /* grows on hover */
+    filter: drop-shadow(0 0 8px greenyellow);
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;  /* makes gradient/image fill the whole screen */
+}
+
+
+body {
+    padding: 40px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+h1 {
+    font-size: 48px;
+    font-family: "Helvetica Neue", sans-serif;
+    color: #000000;
+}
+
+h2 {
+    font-size: 32px;
+    color: #000000;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #000000;
+}
+
+@media screen and (max-width: 1024px) 
+ {
+    body {
+        padding: 32px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.5;
+    }
+}
+
+
+@media screen and (max-width: 768px) 
+ {
+    body {
+        padding: 28px;
+    }
+
+    h1 {
+        font-family: "Helvetica Neue", sans-serif;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.45;
+    }
+}
+
+@media screen and (max-width: 600px) 
+ {
+    body {
+        padding: 22px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+    }
+
+    p {
+        font-size: 15px;
+        color: #000000;
+    }
+}
+
+@media screen and (max-width: 480px) 
+{
+    body {
+        padding: 16px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+@media screen and (max-width: 320px) 
+{
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 1.3;
+    }
+}
+
+/* Piano Note Guessing Game */
+#noteDisplay {
+    font-size: clamp(2rem, 6vw, 60px);
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.piano {
+    position: relative;
+    width: min(88vw, 720px);
+    height: min(32vh, 260px);
+    min-height: 160px;
+    margin: 30px auto;
+    max-width: 720px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.white-key {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    height: 100%;
+    margin-right: 1px;
+    border: 1px solid #333;
+    background: linear-gradient(to bottom, #fff 0%, #f5f5f5 100%);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: bold;
+    padding-bottom: 12px;
+    font-size: clamp(10px, 1.5vw, 16px);
+    transition: background 0.1s;
+}
+
+.white-key:last-of-type {
+    margin-right: 0;
+}
+
+.white-key:hover {
+    background: linear-gradient(to bottom, #eee 0%, #e8e8e8 100%);
+}
+
+.white-key:active {
+    background: linear-gradient(to bottom, #ddd 0%, #e0e0e0 100%);
+}
+
+.black-key {
+    position: absolute;
+    width: 12%;
+    height: 62%;
+    min-width: 28px;
+    background: linear-gradient(to bottom, #1a1a1a 0%, #000 100%);
+    top: 0;
+    z-index: 2;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: clamp(8px, 1.2vw, 12px);
+    padding-bottom: 8px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+    transition: background 0.1s;
+}
+
+.black-key:hover {
+    background: linear-gradient(to bottom, #333 0%, #1a1a1a 100%);
+}
+
+.black-key:active {
+    background: linear-gradient(to bottom, #444 0%, #222 100%);
+}
+
+#cSharp { left: calc(14.28% - 6%); }
+#dSharp { left: calc(28.56% - 6%); }
+#fSharp { left: calc(57.12% - 6%); }
+#gSharp { left: calc(71.4% - 6%); }
+#aSharp { left: calc(85.68% - 6%); }
+
+#result {
+    font-size: clamp(1.1rem, 3vw, 24px);
+    margin-top: 20px;
+    text-align: center;
+}
+
+#score {
+    margin-top: 10px;
+    font-size: clamp(1rem, 2.5vw, 18px);
+    text-align: center;
+}
+
+button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    background: #2c25fa;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    color: greenyellow;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px greenyellow);
+}
+
+@media screen and (max-width: 768px) {
+    .piano {
+        width: min(94vw, 640px);
+        height: min(28vh, 220px);
+        min-height: 140px;
+    }
+
+    .black-key {
+        width: 11%;
+        min-width: 22px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .piano {
+        width: min(96vw, 100%);
+        height: min(24vh, 180px);
+        min-height: 120px;
+    }
+
+    .black-key {
+        width: 10%;
+        min-width: 18px;
+        height: 58%;
+    }
+}
