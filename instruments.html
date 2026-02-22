@@ -10,25 +10,20 @@
     <a href="index.html" class="back-button" title="Go Back">back</a>
 
     <h1>Instruments Around the World</h1>
-    <p class="intro">Click an instrument to hear its sound and watch it rotate.</p>
+    <p class="intro">Click an instrument to hear it and see it rotate.</p>
 
-    <div class="instruments-grid">
-        <div class="instrument-card" data-instrument="guzheng" tabindex="0">
-            <div class="instrument-image-wrap">
-                <img src="assets/images/guzheng.png" alt="Guzheng - traditional Chinese zither" class="instrument-img">
-            </div>
-            <p class="instrument-name">Guzheng</p>
-            <p class="instrument-origin">China</p>
-        </div>
-
-        <div class="instrument-card" data-instrument="krar" tabindex="0">
-            <div class="instrument-image-wrap">
-                <img src="assets/images/krar.png" alt="Krar - East African lyre" class="instrument-img">
-            </div>
-            <p class="instrument-name">Krar</p>
-            <p class="instrument-origin">East Africa</p>
-        </div>
-    </div>
+    <section class="instruments-layout">
+        <article class="instrument-card" data-instrument="guzheng" data-freq="440">
+            <img src="assets/images/guzheng.png" alt="Guzheng – Chinese zither" class="instrument-img">
+            <h2>Guzheng</h2>
+            <p>Traditional Chinese long zither with movable bridges.</p>
+        </article>
+        <article class="instrument-card" data-instrument="lyre" data-freq="523.25">
+            <img src="assets/images/lyre.png" alt="Lyre – stringed instrument" class="instrument-img">
+            <h2>Lyre</h2>
+            <p>Stringed instrument with a resonator and tuning crossbar.</p>
+        </article>
+    </section>
 
     <script src="assets/js/instruments.js"></script>
 </body>
